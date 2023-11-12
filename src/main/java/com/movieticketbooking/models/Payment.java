@@ -11,10 +11,6 @@ import java.util.List;
 @Entity
 public class Payment extends BaseModel{
     private double amount;
-    @Enumerated(EnumType.STRING)
-    private List<PaymentMode>paymentModes;
-    @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
     private Date dateOfPayment;
     private String refferenceId;
     @ManyToOne
@@ -24,4 +20,10 @@ public class Payment extends BaseModel{
     M           1 --> Many payment(Split paymemt) for one ticket
      */
     private Ticket ticket;
+    @ElementCollection
+    @Enumerated(EnumType.ORDINAL)
+    private List<PaymentMode>paymentModes;
+
+    @Enumerated(EnumType.ORDINAL)
+    private PaymentStatus paymentStatus;
 }

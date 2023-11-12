@@ -1,15 +1,13 @@
 package com.movieticketbooking.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 @Entity
+@Table(name="show_seat_mapping")
 public class ShowSeat extends BaseModel{
     /* ShowSeat     Show
          1           1  --> A showSeat is only available for a particular Show
@@ -21,8 +19,9 @@ public class ShowSeat extends BaseModel{
          1          1 --> A showSeat can be a single Seat
          M          1 ---> A Seat can be set as a showSeat many number of times
      */
-     @ManyToOne
+    @ManyToOne
     private Seat seat;
-     @Enumerated(EnumType.STRING)
-     private ShowSeatStatus showSeatStatus;
+
+    @Enumerated(EnumType.ORDINAL)
+    private ShowSeatStatus showSeatStatus;
 }

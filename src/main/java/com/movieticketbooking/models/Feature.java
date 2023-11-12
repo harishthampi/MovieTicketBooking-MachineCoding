@@ -1,7 +1,8 @@
 package com.movieticketbooking.models;
 
-public enum ScreenFeature {
+public enum Feature {
     TWO_D,
     THREE_D,
-    DOLBY
+    DOLBY,
+    IMAX
 }

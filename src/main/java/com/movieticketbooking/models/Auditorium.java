@@ -4,18 +4,16 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.awt.*;
 import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Screen extends BaseModel{
+public class Auditorium extends BaseModel{
     private String name;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     private List<Seat>seats;
+
     @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private List<ScreenFeature>screenFeatures;
-    @ManyToOne
-    private Theater theater;
+    @Enumerated(EnumType.ORDINAL)
+    private List<Feature> auditoriumFeatures;
 }

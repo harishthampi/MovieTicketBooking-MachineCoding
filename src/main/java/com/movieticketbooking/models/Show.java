@@ -1,8 +1,6 @@
 package com.movieticketbooking.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +16,8 @@ public class Show extends BaseModel{
     private Date startTime;
     private Date endTime;
     @ManyToOne
-    private Screen screen;
-    @OneToMany(mappedBy = "show")
-    private List<ShowSeat>showSeats;
+    private Auditorium auditorium;
+    @ElementCollection
+    @Enumerated(EnumType.ORDINAL)
+    private List<Feature>showFeature;
 }
